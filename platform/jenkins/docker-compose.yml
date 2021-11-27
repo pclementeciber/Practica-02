@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  jenkins:
+    container_name: "platform-jenkins"
+    build:
+      context: .
+      dockerfile: ./DockerFile
+    extra_hosts:
+      - "myregistry.local:10.100.199.200"
+    ports:
+      - 7000:8080
+    volumes:
+      - ./home:/var/jenkins_home
+      - ~/.ssh:/var/jenkins_home/.ssh
+
